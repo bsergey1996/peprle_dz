@@ -1,32 +1,49 @@
-import React from 'react';
+import { useState } from 'react';
 import './App.css';
-
-import Button from './Components/Button/Button'
+import Button from './Components/Button/Button';
 import SearchInput from './Components/SearchInput/SearchInput';
-import Paragraph from './Components/Paragraph/Paragraph';
+import Header from './Components/Header/Header';
+
 
 function App() {
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleInputChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleSearchClick = (e) => {
+    e.preventDefault();
+    console.log('Поиск запущен с запросом:', searchValue);
+
+  };
+
   return (
     <div className="app-container">
-      
-      <h1 className="app-title">Поиск</h1>
+      <Header />
 
-      <div className="description-container">
-        <Paragraph fontSize="16px">
+      <main className="main-content">
+        <h1 className="title">Поиск</h1>
+        <p className="description">
           Введите название фильма, сериала или мультфильма для поиска и добавления в избранное.
-        </Paragraph>
-      </div>
+        </p>
 
-      <div className="search-section">
-        <div className="search-input-container">
-           <SearchInput placeholder="Введите название" />
+        <div className="search-bar">
+          <SearchInput 
+            value={searchValue}
+            onChange={handleInputChange}
+            placeholder="Введите название"
+          />
+          
+          <Button onClick={handleSearchClick}>
+            Искать
+          </Button>
         </div>
-        
-        <Button onClick={() => console.log('Клик!')}>
-          Искать
-        </Button>
-      </div>
 
+        <div style={{marginTop: '20px', color: 'gray'}}>
+           Текущий запрос: {searchValue}
+        </div>
+      </main>
     </div>
   );
 }

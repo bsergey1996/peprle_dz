@@ -3,7 +3,6 @@ import './SearchInput.css';
 const SearchInput = ({ placeholder, value, onChange }) => {
   return (
     <div className="input-wrapper">
-      {/* SVG иконка лупы встроена прямо сюда */}
       <svg 
         className="search-icon" 
         viewBox="0 0 24 24" 
