@@ -1,0 +1,64 @@
+.movie-card {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 2 / 3; /* Стандартная пропорция постера */
+}
+
+.card-rating {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #4cd964; /* Зеленый рейтинг */
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.card-favorite {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.card-favorite.active {
+  color: #ff4757; /* Красное сердечко */
+}
+
+.card-title {
+  margin-top: 10px;
+  font-size: 16px;
+  color: white;
+  text-align: left;
+}
