@@ -2,7 +2,7 @@ import styles from './SearchInput.module.css';
 
 const SearchInput = ({ placeholder, value, onChange }) => {
   return (
-    <div className={styles['input-wrapper']}>
+    <div className={styles['input-wrapper']}> 
       <svg 
         className={styles['search-icon']} 
         viewBox="0 0 24 24" 

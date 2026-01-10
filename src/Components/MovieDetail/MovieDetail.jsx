@@ -30,7 +30,7 @@ const MovieDetail = ({ movie }) => {
           <div className={styles['detail-actions']}>
             <span className={styles['rating-badge']}>⭐ {movie.rating}</span>
             <button className={styles['favorite-btn']}>♥ В избранное</button>
-          </div>
+          </div> 
 
           {/* Характеристики (Тип, Дата, Длительность...) */}
           <div className={styles['detail-meta-grid']}>
