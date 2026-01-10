@@ -1,14 +1,14 @@
-import './SearchInput.css';
+import styles from './SearchInput.module.css';
 
 const SearchInput = ({ placeholder, value, onChange }) => {
   return (
-    <div className="input-wrapper">
+    <div className={styles['input-wrapper']}>
       <svg 
-        className="search-icon" 
+        className={styles['search-icon']} 
         viewBox="0 0 24 24" 
         fill="none" 
         stroke="currentColor" 
-        strokeWidth="2" 
+        strokeWidth={2} 
         strokeLinecap="round" 
         strokeLinejoin="round"
       >
@@ -18,7 +18,7 @@ const SearchInput = ({ placeholder, value, onChange }) => {
       
       <input 
         type="text" 
-        className="custom-input"
+        className={styles['custom-input']}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

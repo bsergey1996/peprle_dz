@@ -1,18 +1,18 @@
-import './Header.css';
+import styles from './Header.module.css';
 
 const Header = () => {
   return (
-    <header className="header">
+    <header className={styles.header}>
 
       {/* Меню */}
-      <nav className="header-nav">
-        <a href="#" className="nav-link active">Поиск фильмов</a>
-        <a href="#" className="nav-link">Мои фильмы <span className="badge">2</span></a>
+      <nav className={styles['header-nav']}>
+        <a href="#" className={`${styles['nav-link']} ${styles.active}`}>Поиск фильмов</a>
+        <a href="#" className={styles['nav-link']}>Мои фильмы <span className={styles.badge}>2</span></a>
       </nav>
 
       {/* Профиль */}
-      <div className="header-auth">
-        <a href="#" className="nav-link">Войти</a>
+      <div className={styles['header-auth']}>
+        <a href="#" className={styles['nav-link']}>Войти</a>
       </div>
     </header>
   );
