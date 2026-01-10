@@ -1,0 +1,49 @@
+.jornalForm {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.jornalFormTitle{
+	border: none;
+	background: none;
+	font-weight: 600;
+	font-size: 32px;
+	font-style: normal;
+	line-height: normal;
+	font-family: 'Source Sans 3', sans-serif;
+	border-bottom: 1px solid #272727;
+}
+
+.jornalFormLabel{
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	max-width: 130px;
+}
+
+.jornalFormRow{
+	display: flex;
+	align-items: center;
+}
+
+.input{
+	color:#757575;
+	border: none;
+	background: none;
+	font-weight: 600;
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-family: 'Source Sans 3', sans-serif;
+	border-bottom: 1px solid #323232;
+}
+
+.jornalFormText{
+	background: none;
+}
+
+/* date, tag and button placeholders (were used as class names in JSX) */
+.jornalFormDate {}
+.jornalFormTag {}
+.jornalFormButton {}

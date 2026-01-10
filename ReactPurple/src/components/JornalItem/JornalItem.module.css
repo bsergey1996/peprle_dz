@@ -1,0 +1,35 @@
+.jornalItem{
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #FFF;
+    padding: 20px;
+}
+
+.jornalItemHeader{
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 28px;
+}
+.jornalItemDate{
+    color: rgba(255, 255, 255, 0.40);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.jornalItemText{
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: normal;
+    overflow: hidden;
+
+}
+
+.jornalItemBody{
+    display: flex;
+    gap:10px
+}
