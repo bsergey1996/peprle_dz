@@ -1,0 +1,26 @@
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.loginCard {
+    padding: 2rem;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background: #1a1a1a;
+    width: 100%;
+    max-width: 400px;
+}
+
+.title {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
