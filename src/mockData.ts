@@ -1,5 +1,5 @@
-import img1 from './assets/Card Image.png';      
-import img2 from './assets/Card Image (1).png'; 
+import img1 from './assets/Card Image.png';
+import img2 from './assets/Card Image (1).png';
 import img3 from './assets/Card Image (2).png';
 import img4 from './assets/Card Image (3).png';
 import img5 from './assets/Card Image (4).png';
@@ -7,19 +7,27 @@ import img6 from './assets/Card Image (5).png';
 import img7 from './assets/Card Image (6).png';
 import img8 from './assets/Card Image (7).png';
 
-export const MOVIE_DATA = [
+export interface Movie {
+  id: number;
+  title: string;
+  rating: number;
+  image: string;
+  isFavorite: boolean;
+}
+
+export const MOVIE_DATA: Movie[] = [
   {
     id: 1,
     title: 'Черное зеркало',
     rating: 8.8,
-    image: img1, // Card Image.png
+    image: img1,
     isFavorite: false,
   },
   {
     id: 2,
     title: 'Очень странные дела',
     rating: 8.7,
-    image: img2, // Card Image (1).png
+    image: img2,
     isFavorite: true,
   },
   {
@@ -61,7 +69,7 @@ export const MOVIE_DATA = [
     id: 8,
     title: 'Пацаны',
     rating: 8.7,
-    image: img8, // Card Image (7).png
+    image: img8,
     isFavorite: false,
   },
 ];

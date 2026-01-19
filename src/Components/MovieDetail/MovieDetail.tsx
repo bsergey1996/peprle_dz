@@ -1,7 +1,12 @@
+import { FC } from 'react';
+import { Movie } from '../../mockData';
 import styles from './MovieDetail.module.css';
 
-const MovieDetail = ({ movie }) => {
-  // Если фильм не передали, ничего не рендерим (или можно показать заглушку)
+interface MovieDetailProps {
+  movie?: Movie;
+}
+
+const MovieDetail: FC<MovieDetailProps> = ({ movie }) => {
   if (!movie) return null;
 
   return (
@@ -21,16 +26,16 @@ const MovieDetail = ({ movie }) => {
         {/* Правая колонка: Информация */}
         <div className={styles['detail-info']}>
           <p className={styles['detail-description']}>
-            Это описание фильма. Так как в наших мок-данных нет длинного текста, 
-            представим здесь захватывающий сюжет. Герой отправляется в опасное 
-            путешествие, чтобы спасти мир и найти себя. Невероятные спецэффекты 
+            Это описание фильма. Так как в наших мок-данных нет длинного текста,
+            представим здесь захватывающий сюжет. Герой отправляется в опасное
+            путешествие, чтобы спасить мир и найти себя. Невероятные спецэффекты
             и глубокий смысл гарантированы.
           </p>
 
           <div className={styles['detail-actions']}>
             <span className={styles['rating-badge']}>⭐ {movie.rating}</span>
             <button className={styles['favorite-btn']}>♥ В избранное</button>
-          </div> 
+          </div>
 
           {/* Характеристики (Тип, Дата, Длительность...) */}
           <div className={styles['detail-meta-grid']}>
