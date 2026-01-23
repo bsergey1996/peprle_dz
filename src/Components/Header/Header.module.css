@@ -19,7 +19,11 @@
   transition: color 0.3s;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link.active {
   color: white;
 }
 
@@ -32,6 +36,13 @@
   margin-left: 5px;
 }
 
-.active {
-  color: white;
+.header-auth {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-name {
+  color: #aaa;
+  font-size: 16px;
 }

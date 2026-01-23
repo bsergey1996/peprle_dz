@@ -1,4 +1,4 @@
-.custom-button {
+.button {
   background-color: #726cee; /* Фиолетовый цвет с макета */
   color: white;
   font-family: 'Inter', sans-serif;
@@ -11,10 +11,10 @@
   transition: background-color 0.2s, transform 0.1s;
 }
 
-.custom-button:hover {
+.button:hover {
   background-color: #5f59d4;
 }
 
-.custom-button:active {
+.button:active {
   transform: scale(0.98);
 }

@@ -2,14 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    background-color: #0f131a;
+    padding: 20px;
 }
 
 .loginCard {
     padding: 2rem;
     border: 1px solid #333;
     border-radius: 10px;
-    background: #1a1a1a;
+    background: #1a1a1f;
     width: 100%;
     max-width: 400px;
 }
@@ -17,6 +19,8 @@
 .title {
     margin-bottom: 1.5rem;
     text-align: center;
+    color: #fff;
+    font-size: 24px;
 }
 
 .form {
