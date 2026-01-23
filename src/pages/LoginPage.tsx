@@ -7,8 +7,8 @@ const LoginPage: FC = () => {
   const { login } = useUser();
   const navigate = useNavigate();
 
-  const handleLogin = (email: string, password: string) => {
-    login(email);
+  const handleLogin = (name: string) => {
+    login(name);
     navigate('/');
   };
 

@@ -21,7 +21,7 @@ const Login: FC<LoginProps> = ({ onLogin }) => {
   return (
     <div className={styles.loginContainer}>
       <div className={styles.loginCard}>
-        <h1 className={styles.title}>Вход в дневник</h1>
+        <h1 className={styles.title}>Вход в Кинотеатр</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
           <Input
             placeholder="Введите ваше имя"

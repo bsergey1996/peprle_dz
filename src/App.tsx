@@ -52,6 +52,7 @@ const App: FC = () => {
           {filteredMovies.map((movie) => (
             <MovieCard
               key={movie.id}
+              id={movie.id}
               title={movie.title}
               rating={movie.rating}
               image={movie.image}
