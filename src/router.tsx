@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import MovieDetailPage from './pages/MovieDetailPage';
 import Favorites from './pages/Favorites';
+import { movieDetailLoader } from './services/loaders';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       {
         path: 'movie/:id',
         element: <MovieDetailPage />,
+        loader: movieDetailLoader,
       },
     ],
   },

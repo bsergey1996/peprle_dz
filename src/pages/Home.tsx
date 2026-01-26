@@ -1,16 +1,45 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import SearchInput from '../Components/SearchInput/SearchInput';
 import Button from '../Components/Button/Button';
 import MovieCard from '../Components/MovieCard/MovieCard';
-import { MOVIE_DATA } from '../mockData';
+import { searchMovies, Movie } from '../services/movieApi';
 import styles from './pages.module.css';
 
 const Home: FC = () => {
   const [searchValue, setSearchValue] = useState<string>('');
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [searched, setSearched] = useState<boolean>(false);
 
-  const filteredMovies = MOVIE_DATA.filter(movie =>
-    movie.title.toLowerCase().includes(searchValue.toLowerCase())
-  );
+  const handleSearch = async () => {
+    if (!searchValue.trim()) {
+      setMovies([]);
+      setSearched(false);
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+    setSearched(true);
+
+    const results = await searchMovies(searchValue);
+    setMovies(results);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchValue.trim()) {
+        handleSearch();
+      } else {
+        setMovies([]);
+        setSearched(false);
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchValue]);
 
   return (
     <div className={styles.pageContainer}>
@@ -24,25 +53,28 @@ const Home: FC = () => {
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />
-        <Button onClick={() => console.log('Ищем:', searchValue)}>
+        <Button onClick={handleSearch}>
           Искать
         </Button>
       </div>
 
+      {loading && <p className={styles['loading']}>Загрузка...</p>}
+      {error && <p className={styles['error']}>Ошибка: {error}</p>}
+
       <div className={styles['movies-grid']}>
-        {filteredMovies.map((movie) => (
+        {movies.map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}
             title={movie.title}
             rating={movie.rating}
             image={movie.image}
-            isFavorite={movie.isFavorite}
+            isFavorite={false}
           />
         ))}
       </div>
 
-      {filteredMovies.length === 0 && (
+      {searched && movies.length === 0 && !loading && (
         <p className={styles['no-results']}>Ничего не найдено :(</p>
       )}
     </div>

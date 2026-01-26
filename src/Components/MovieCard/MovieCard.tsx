@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './MovieCard.module.css';
 
 interface MovieCardProps {
-  id: number;
+  id: string;
   title: string;
   rating: number;
   image: string;
