@@ -1,13 +1,14 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useUser } from '../../context/UserContext';
 import Button from '../Button/Button';
-import { MOVIE_DATA } from '../../mockData';
+import { selectFavoriteCount } from '../../store/favoritesSlice';
 import styles from './Header.module.css';
 
 const Header: FC = () => {
   const { currentUser, logout } = useUser();
-  const favoriteCount = MOVIE_DATA.filter(movie => movie.isFavorite).length;
+  const favoriteCount = useSelector(selectFavoriteCount);
 
   return (
     <header className={styles.header}>

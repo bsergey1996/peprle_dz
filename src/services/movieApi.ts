@@ -44,9 +44,9 @@ export async function searchMovies(query: string): Promise<Movie[]> {
   try {
     const response = await fetch(`${SEARCH_API}?q=${encodeURIComponent(query)}`);
     if (!response.ok) throw new Error('Failed to fetch movies');
-    
+
     const data = await response.json();
-    
+
     if (!data.ok || !Array.isArray(data.description)) {
       return [];
     }
@@ -64,19 +64,24 @@ export async function searchMovies(query: string): Promise<Movie[]> {
   }
 }
 
+export async function getPopularMovies(): Promise<Movie[]> {
+  // Since the API is just search, we simulate "popular" by searching for a popular franchise
+  return searchMovies('Avengers');
+}
+
 export async function getMovieDetail(id: string): Promise<MovieDetails | null> {
   try {
     const response = await fetch(`${DETAIL_API}?tt=${id}`);
     if (!response.ok) throw new Error('Failed to fetch movie details');
-    
+
     const data = await response.json();
-    
+
     if (!data.short) {
       return null;
     }
 
     const movie = data.short;
-    
+
     return {
       id: id,
       title: movie.name || '',

@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import SearchInput from '../Components/SearchInput/SearchInput';
 import Button from '../Components/Button/Button';
 import MovieCard from '../Components/MovieCard/MovieCard';
-import { searchMovies, Movie } from '../services/movieApi';
+import { getPopularMovies, searchMovies, Movie } from '../services/movieApi';
 import styles from './pages.module.css';
 
 const Home: FC = () => {
@@ -14,8 +14,8 @@ const Home: FC = () => {
 
   const handleSearch = async () => {
     if (!searchValue.trim()) {
-      setMovies([]);
-      setSearched(false);
+      // If search is cleared, reload popular movies
+      loadPopularMovies();
       return;
     }
 
@@ -28,13 +28,27 @@ const Home: FC = () => {
     setLoading(false);
   };
 
+  const loadPopularMovies = async () => {
+    setLoading(true);
+    setError(null);
+    const results = await getPopularMovies();
+    setMovies(results);
+    setLoading(false);
+    setSearched(false); // Reset searched flag so we don't show "No results" if popular returns empty (unlikely)
+  };
+
+  useEffect(() => {
+    // Initial load
+    loadPopularMovies();
+  }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchValue.trim()) {
         handleSearch();
       } else {
-        setMovies([]);
-        setSearched(false);
+        // If user clears input, go back to popular
+        loadPopularMovies();
       }
     }, 500);
 
