@@ -1,0 +1,139 @@
+.movie-detail {
+  padding: 40px 0;
+  color: white;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Шапка */
+.detail-header {
+  margin-bottom: 40px;
+}
+
+.back-btn {
+  color: #888;
+  cursor: pointer;
+  margin-bottom: 15px;
+  font-size: 14px;
+  transition: color 0.2s;
+  display: inline-block;
+}
+
+.back-btn:hover {
+  color: white;
+}
+
+.detail-title {
+  font-size: 42px;
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* Контент (Flexbox: Картинка + Инфо) */
+.detail-content {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* Постер */
+.detail-poster-wrapper {
+  flex: 0 0 350px; /* Фиксированная ширина постера */
+}
+
+.detail-poster {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5); /* Красивая тень */
+}
+
+/* Информация */
+.detail-info {
+  flex: 1; /* Занимает все оставшееся место */
+  padding-top: 10px;
+}
+
+.detail-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #c4c4c4;
+  margin-bottom: 30px;
+  max-width: 700px;
+}
+
+/* Блок с рейтингом и кнопкой */
+.detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.rating-badge {
+  background-color: #2a2a2e;
+  border: 1px solid #333;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #f5c518; /* Цвет звезды IMDb */
+}
+
+.favorite-btn {
+  background: transparent;
+  border: none;
+  color: #6a5acd;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.favorite-btn:hover {
+  opacity: 0.8;
+}
+
+/* Сетка характеристик */
+.detail-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meta-label {
+  color: #666;
+  font-size: 14px;
+}
+
+.meta-value {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Адаптив для мобильных (столбиком) */
+@media (max-width: 850px) {
+  .detail-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detail-poster-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .detail-title {
+    font-size: 32px;
+  }
+}

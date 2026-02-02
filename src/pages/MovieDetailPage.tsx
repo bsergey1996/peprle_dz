@@ -1,0 +1,92 @@
+import { FC } from 'react';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { MovieDetails } from '../services/movieApi';
+import Button from '../Components/Button/Button';
+import { toggleFavorite, selectIsFavorite } from '../store/favoritesSlice';
+import styles from './pages.module.css';
+
+const MovieDetailPage: FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const movie = useLoaderData() as MovieDetails | null;
+
+  // Safe check for ID. If movie is null, this hook call is still safe as we handle null ID in selector or pass empty string
+  const isFavorite = useSelector(selectIsFavorite(movie?.id || ''));
+
+  if (!movie) {
+    return (
+      <div className={styles.pageContainer}>
+        <h1>Фильм не найден</h1>
+        <p>Возможно, фильм был удалён или ID не корректен.</p>
+        <Button onClick={() => navigate('/')}>Вернуться на главную</Button>
+      </div>
+    );
+  }
+
+  const handleFavoriteClick = () => {
+    dispatch(toggleFavorite({
+      id: movie.id,
+      title: movie.title,
+      rating: movie.rating,
+      image: movie.image
+    }));
+  };
+
+  return (
+    <div className={styles.pageContainer}>
+      <Button onClick={() => navigate('/')}>← Вернуться</Button>
+
+      <div className={styles.movieDetail}>
+        <img
+          src={movie.image}
+          alt={movie.title}
+          className={styles['movie-detail-image']}
+        />
+        <div className={styles['movie-detail-info']}>
+          <h1>{movie.title}</h1>
+          <p className={styles['movie-rating']}>⭐ Рейтинг: {movie.rating?.toFixed(1) || 'N/A'}/10</p>
+
+          <div className={styles['movie-description']}>
+            <p>
+              {movie.description || 'Описание не доступно'}
+            </p>
+          </div>
+
+          <div className={styles['movie-meta']}>
+            {movie.genres && movie.genres.length > 0 && (
+              <div className={styles['meta-item']}>
+                <span className={styles['meta-label']}>Жанр:</span>
+                <span>{movie.genres.join(', ')}</span>
+              </div>
+            )}
+            {movie.year && (
+              <div className={styles['meta-item']}>
+                <span className={styles['meta-label']}>Год:</span>
+                <span>{movie.year}</span>
+              </div>
+            )}
+            {movie.directors && movie.directors.length > 0 && (
+              <div className={styles['meta-item']}>
+                <span className={styles['meta-label']}>Режиссёр:</span>
+                <span>{movie.directors.join(', ')}</span>
+              </div>
+            )}
+            {movie.actors && movie.actors.length > 0 && (
+              <div className={styles['meta-item']}>
+                <span className={styles['meta-label']}>Актёры:</span>
+                <span>{movie.actors.slice(0, 3).join(', ')}</span>
+              </div>
+            )}
+          </div>
+
+          <Button onClick={handleFavoriteClick}>
+            {isFavorite ? '💔 Убрать из избранного' : '🤍 Добавить в избранное'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MovieDetailPage;

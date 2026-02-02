@@ -1,0 +1,39 @@
+.app-container {
+  background-color: #0f131a;
+  min-height: 100vh;
+  padding: 40px;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: white;
+  margin: -10px;
+}
+
+.app-title {
+  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* Обертка для строки поиска и кнопки */
+.search-section {
+  display: flex;
+  gap: 16px;
+  max-width: 700px;
+}
+
+/* Контейнер для инпута, чтобы он занимал все свободное место */
+.search-input-container {
+  flex-grow: 1;
+}
+
+/* Контейнер для параграфа */
+.description-container {
+  margin-bottom: 24px;
+  max-width: 600px;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
